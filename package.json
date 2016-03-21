@@ -1,0 +1,74 @@
+{
+	"name": "skylift",
+	"displayName": "Skylift",
+	"description": "PHPUnit Automatic Test Runner",
+	"version": "0.0.1",
+	"publisher": "HvyIndustries",
+	"engines": {
+		"vscode": "^0.10.6"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onCommand:extension.initSkylift",
+        "workspaceContains:.skylift"
+	],
+	"main": "./out/src/extension",
+	"contributes": {
+		"commands": [
+            {
+                "command": "extension.initSkylift",
+                "title": "Skylift: Initialise"
+            },
+            {
+                "command": "extension.reloadConfig",
+                "title": "Skylift: Reload Config"
+            },
+            {
+                "command": "extension.showFailingTests",
+                "title": "Skylift: Show Failing Tests"
+            },
+            {
+                "command": "extension.runAllTestsNow",
+                "title": "Skylift: Run All Tests"
+            },
+            {
+                "command": "extension.pauseExecution",
+                "title": "Skylift: Pause Automatic Test Execution"
+            },
+            {
+                "command": "extension.startExecution",
+                "title": "Skylift: Resume Automatic Test Execution"
+            }
+        ],
+        "configuration": {
+            "title": "Skylift Configuration",
+            "type": "object",
+            "properties": {
+                "skylift.phpunitPath": {
+                    "type": "string",
+                    "default": "",
+                    "description": "The path to a PHPUnit PHAR file. Leave empty to use path variable"
+                },
+                "skylift.maxConcurrentThreads": {
+                    "type": "integer",
+                    "default": 2,
+                    "description": "The maximum number of threads for parallel test execution"
+                }
+            }
+        }
+	},
+	"scripts": {
+		"vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+		"compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install"
+	},
+	"devDependencies": {
+		"typescript": "^1.7.5",
+		"vscode": "^0.11.0"
+	},
+    "extensionDependencies": [
+        "vscode.php"
+    ]
+}
