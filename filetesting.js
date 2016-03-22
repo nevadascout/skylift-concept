@@ -15,6 +15,9 @@ bat.on('exit', (code) => {
     parseOutput();
 });
 
+//bat.stdin.pause();
+//bat.kill();
+
 function parseOutput()
 {
     var failedTests = [];
